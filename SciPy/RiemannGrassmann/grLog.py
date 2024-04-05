@@ -23,6 +23,7 @@ def GrassmannLog(U0, U1):
     # Step 2: SVD
     H = U1star - U0 @ ( U0.T @ U1star)
     Q2, S2, R2 = np.linalg.svd(H, full_matrices=False)
+    S2[S2>1.0] = 1.0 # avoids NaNs
     Sigma = np.diag(np.arcsin(S2))
 
     # Step 3: Tangent vector
@@ -54,7 +55,9 @@ def GrassmannLog(U0, U1):
 def GrassmannLog_standard(U0, U1):
     # Step 1: (I-U0*U0')*U1*(U0'*U1)^-1
     M = U0.T @ U1
-    N = U1 @ np.linalg.pinv(M) - U0
+    # N = U1 @ np.linalg.pinv(M) - U0
+    N = (np.eye(U0.shape[0]) - U0 @ U0.T) @ U1 @ np.linalg.pinv(M) # more numerically stable
+
 
     # Step 2: SVD
     Q2, S2, R2 = np.linalg.svd(N, full_matrices=False)
