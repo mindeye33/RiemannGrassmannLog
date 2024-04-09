@@ -10,7 +10,7 @@ from . import grExp
 # which is also the Riemannian distance dist(U0,U1)
 #
 # input arguments
-#        (n,p) = dimension of the Stiefel matrices
+#        (n,p) = dimension of the Grassmann matrices
 #        dist  = Riemannian distance between the points U0,U1
 #                that are to be created
 # Output arguments
