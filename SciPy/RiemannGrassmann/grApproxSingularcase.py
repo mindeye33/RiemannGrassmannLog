@@ -2,9 +2,10 @@ import numpy as np
 from . import grAux
 from . import grExp
 from . import grLog
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------------------------
-# Exponential map on Grassmann manifold
+# Approximation of the singular case
 # Input arguments      
 #              n = dimension of the Grassmann manifold
 #              p = dimension of the Grassmann manifold
@@ -15,8 +16,6 @@ from . import grLog
 #          Plot
 #------------------------------------------------------------------------------
 
-
-# Approximation of the singular case
 def test(n = 1000, p = 200, N = 10, r = 1, T = np.logspace(-20, -1, 100)):
     np.random.seed(seed=0)
 
@@ -68,8 +67,6 @@ def test(n = 1000, p = 200, N = 10, r = 1, T = np.logspace(-20, -1, 100)):
             SubspaceErrorLog2[k,i] = grAux.subspaceDist(U1,U1Log_standardproj);
             SubspaceErrorLog3[k,i] = grAux.subspaceDist(U1,U1Log_standard);
 
-
-    from matplotlib import pyplot as plt
 
     # Plot the results on a log-log plot
     plt.xscale('log')
