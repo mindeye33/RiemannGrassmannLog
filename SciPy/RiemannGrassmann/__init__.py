@@ -1,5 +1,5 @@
 
-__all__ = ["grExp", "grLog", "grAux"]
+__all__ = ["grExp", "grLog", "grAux", "grApproxSingularcase"]
 
 # from . import *
 
